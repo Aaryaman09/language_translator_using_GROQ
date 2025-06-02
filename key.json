@@ -3,5 +3,5 @@
     "LANGCHAIN_TRACING_V2": "true",
     "LANGCHAIN_PROJECT_NAME": "Language_translation_using_GROQ",
     "GROQ_API_KEY": "",
-    "llm_service":"paid" 
+    "llm_service":"free" 
 }

@@ -10,11 +10,13 @@ from langchain_core.output_parsers import StrOutputParser
 with open("key.json", "r") as f:
     config = json.load(f)
 
-# Ensure the Ollama server is running and accessible on Langsmith server
-os.environ["LANGCHAIN_API_KEY"] = config["LANGCHAIN_API_KEY"]
-os.environ["LANGCHAIN_TRACING_V2"] = config["LANGCHAIN_TRACING_V2"]
-os.environ["LANGCHAIN_PROJECT"] = config["LANGCHAIN_PROJECT_NAME"]
-os.environ["GROQ_API_KEY"] = config["GROQ_API_KEY"]
+# Setting up environment variables for Langsmith and Groq
+# Commented out to avoid tracking right now, uncomment if needed
+
+# os.environ["LANGCHAIN_API_KEY"] = config["LANGCHAIN_API_KEY"]
+# os.environ["LANGCHAIN_TRACING_V2"] = config["LANGCHAIN_TRACING_V2"]
+# os.environ["LANGCHAIN_PROJECT"] = config["LANGCHAIN_PROJECT_NAME"]
+# os.environ["GROQ_API_KEY"] = config["GROQ_API_KEY"]
 
 
 prompt = ChatPromptTemplate.from_messages(
@@ -40,6 +42,7 @@ app = FastAPI(
     description="API for translating text between languages",
     version="1.0"
 )
+# app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 add_routes(app, chain, path="/chain")
 
